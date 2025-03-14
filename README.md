@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Workout Buddi
 
-## Getting Started
+Workout Buddi is an interactive fitness assistant powered by Llama 3.2, designed to help you track your workouts and diet. The application runs locally and uses a SQLite database to store conversation history.
 
-First, run the development server:
+## Features
+
+- Interactive chat interface with Llama 3.2 AI model
+- Real-time streaming responses
+- Workout tracking
+- Food intake logging
+- Local data storage with SQLite
+
+## Tech Stack
+
+- **Frontend**: Next.js (React 18), Shadcn/UI
+- **Database**: SQLite
+- **LLM Service**: Ollama (Llama 3.2)
+
+## Prerequisites
+
+Before running the application, make sure you have the following installed:
+
+1. Node.js (v18 or higher)
+2. npm or yarn
+3. [Ollama](https://ollama.ai/) with Llama 3.2 model
+
+## Setup
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd workout-buddi
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Make sure Ollama is running with Llama 3.2 model:
+
+```bash
+ollama run llama3.2
+```
+
+4. Start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/`: Next.js app directory
+  - `page.tsx`: Home page
+  - `chat/`: Chat interface
+  - `api/`: API routes
+- `components/`: UI components
+- `lib/`: Utility functions
+  - `db.ts`: Database utilities
+  - `ollama.ts`: Ollama client
 
-## Learn More
+## Database Schema
 
-To learn more about Next.js, take a look at the following resources:
+The application uses a SQLite database with the following tables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Messages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `id`: Primary key
+- `role`: User or assistant
+- `content`: Message content
+- `timestamp`: Message timestamp
 
-## Deploy on Vercel
+### Workouts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `id`: Primary key
+- `user_id`: User identifier
+- `exercise`: Exercise name
+- `sets`: Number of sets
+- `reps`: Number of repetitions
+- `weight`: Weight used
+- `duration`: Exercise duration
+- `timestamp`: Workout timestamp
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Food Logs
+
+- `id`: Primary key
+- `user_id`: User identifier
+- `food_name`: Food name
+- `calories`: Calorie count
+- `protein`: Protein content (g)
+- `carbs`: Carbohydrate content (g)
+- `fat`: Fat content (g)
+- `timestamp`: Food log timestamp
+
+## Usage
+
+1. Visit the home page at [http://localhost:3000](http://localhost:3000)
+2. Click on "Start Chatting Now" to open the chat interface
+3. Chat with Workout Buddi to track your workouts and diet
+4. Example prompts:
+   - "I just did 3 sets of 10 push-ups"
+   - "I had a chicken salad for lunch with about 30g of protein"
+   - "What's a good workout for my legs?"
+   - "Can you suggest a high-protein breakfast?"
+
+## License
+
+This project is licensed under the MIT License. 
