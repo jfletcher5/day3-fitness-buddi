@@ -114,4 +114,4 @@ The application uses a SQLite database with the following tables:
 
 ## License
 
-This project is licensed under the MIT License. 
+This project is licensed under the MIT License. # day3_simple_local_llm
